@@ -1,16 +1,46 @@
-# store_dashborad
+# 🛠️ Admin Control Panel - Souqly Management System
 
-A new Flutter project.
+## ✨ Features
 
-## Getting Started
+- 📦 Inventory management  
+- 🛍️ Order management  
+- 🎁 Offers, Products, Sales management  
 
-This project is a starting point for a Flutter application.
+## 🏗️ Architecture
 
-A few resources to get you started if this is your first Flutter project:
+- **Clean Architecture**:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+lib/
+├── core/
+│   ├── errors/
+│   ├── utils/
+│   └── di/                     # 🔌 dependency injection (GetIt أو Riverpod providers)
+│
+├── features/
+│   ├── inventory/
+│   │   ├── data/
+│   │   │   ├── datasources/    # 🔥 Firestore implementations
+│   │   │   ├── models/         # 📄 DTOs / Maps
+│   │   │   └── repositories/   # 🏭 Impl of domain contracts
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   ├── repositories/   # 📑 abstract interfaces
+│   │   │   └── usecases/
+│   │   └── presentation/
+│   │       ├── providers/      # 🌱 Riverpod providers (state + controllers)
+│   │       └── pages/widgets/
+│   │
+│   ├── orders/    (🔄 same structure)
+│   ├── products/
+│   └── offers/
+│
+├── main.dart
+└── app.dart
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Run
+
+1. Configure Firebase and add `google-services.json` / `GoogleService-Info.plist`.
+2. `flutter pub get`
+3. `flutter run`
